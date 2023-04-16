@@ -1,0 +1,28 @@
+{
+  "auth": "zef:deoac",
+  "authors": [
+    "deoac"
+  ],
+  "build-depends": [
+  ],
+  "depends": [
+    "Digest::SHA1::Native",
+    "Filetype::Magic",
+    "LWP::Simple"
+  ],
+  "description": "Download Today's Astronomy Picture of the Day",
+  "license": "Artistic-2.0",
+  "name": "App::APOTD",
+  "perl": "6.d",
+  "provides": {
+    "App::APOTD": "lib/App/APOTD.rakumod"
+  },
+  "resources": [
+  ],
+  "source-url": "https://github.com/deoac/apotd.git",
+  "tags": [
+  ],
+  "test-depends": [
+  ],
+  "version": "1.0.1"
+}

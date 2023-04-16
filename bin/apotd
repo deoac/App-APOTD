@@ -1,0 +1,23 @@
+#!/usr/bin/env raku
+use v6.d;
+
+use CLI::Version $?DISTRIBUTION, proto sub MAIN(|) {*}  
+
+
+use App::APOTD;
+
+multi sub MAIN (
+        #| What directory should the image be saved to?
+    Str  :d(:$dir)      is copy = $APOTD-FOLDER,
+        #| What filename should it be saved under? [default: the caption of the image]
+    Str  :f(:$filename) is copy,
+        #| Add a count to the start of the filename.
+    Bool :p(:$prepend-count)    = False,
+    Bool :$debug        is copy = False,
+) {
+    main(:$dir, :$filename, :$prepend-count, :$debug);
+}
+
+# vim: expandtab shiftwidth=4
+
+
