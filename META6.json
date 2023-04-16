@@ -15,14 +15,13 @@
   "name": "App::APOTD",
   "perl": "6.d",
   "provides": {
-    "App::APOTD": "lib/App/APOTD.rakumod"
   },
   "resources": [
   ],
-  "source-url": "https://github.com/deoac/apotd.git",
+  "source-url": "https://github.com/deoac/App-APOTD",
   "tags": [
   ],
   "test-depends": [
   ],
-  "version": "1.0.1"
+  "version": "1.0.0"
 }
