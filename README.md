@@ -17,8 +17,8 @@
 [AUTHOR](#author)  
 [COPYRIGHT AND LICENSE](#copyright-and-license)  
 
+----
 
- 
 # VERSION
 This documentation refers to `App::APOTD` version 1.0.0
 
@@ -146,5 +146,3 @@ Copyright 2023 Shimon Bollinger
 This module is free software; you can redistribute it and/or modify it under the same terms as Perl itself. See [perlartistic](http://perldoc.perl.org/perlartistic.html).
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
-
