@@ -8,13 +8,15 @@ use v6.d;
 #  DESCRIPTION: Download the Astronomy Picture of the Day
 #
 #       AUTHOR: <Shimon Bollinger>  (<deoac.bollinger@gmail.com>)
-#      VERSION: 1.0.0
-#     REVISION: Last modified: Sun 16 Apr 2023 04:05:06 PM EDT
+#      VERSION: 1.0.1
+#     REVISION: Last modified: Mon 17 Apr 2023 10:38:49 PM EDT
 #===============================================================================
 
 use Filetype::Magic;
 use Digest::SHA1::Native;
 use LWP::Simple;
+
+our $VERSION is export = v1.0.1;
 
 constant $APOTD-PAGE   = "https://apod.nasa.gov/apod/astropix.html";
 constant $WEBSITE      = $APOTD-PAGE.IO.dirname;
@@ -34,23 +36,32 @@ my regex in-dbl-quotes       {
                                 <dbl-quote>
                              }
 
-sub USAGE {
-say q:to/END/;
-Usage:
-
-    -d|--dir=<Str>         What directory should the image be saved to? [default: '$*HOME/Pictures/apotd']
-    -f|--filename=<Str>    What filename should it be saved under? [default: the caption of the image]
-    -p|--prepend-count     Add a count to the start of the filename. [default: False]
-END
-
-} # end of sub USAGE
+#| Copied from <zef:lizmat>'s CLI::Version module.
+#| For some reason, I can't get it to work here.
+#| $?DISTRIBUTION.meta does not show data from my META6.json.
+sub print-version ($verbose) is export {
+    my $compiler = Compiler.new;
+    say   'apotd - '
+        ~ ($verbose ?? "Download Today's Astronomy Picture of the Day" ~ ".\nP" !! 'p')
+        ~ "rovided by App::APOTD version $VERSION, running "
+        ~ $*RAKU.name
+        ~ ' '
+        ~ $*RAKU.version
+        ~ ' with '
+        ~ $compiler.name.tc
+        ~ ' '
+        ~ $compiler.version.Str.subst(/ '.' g .+/)
+        ~ '.'
+    ;
+    exit;
+} # end of sub print-version ($version, $verbose)
 
 my sub main (
-        #| What directory should the image be saved to?
+        # What directory should the image be saved to?
     Str  :d(:$dir)      is copy = $APOTD-FOLDER,
-        #| What filename should it be saved under? [default: the caption of the image]
+        # What filename should it be saved under? [default: the caption of the image]
     Str  :f(:$filename) is copy,
-        #| Add a count to the start of the filename.
+        # Add a count to the start of the filename.
     Bool :p(:$prepend-count)    = False,
     Bool :$debug        is copy = False,
 ) is export {
@@ -286,7 +297,7 @@ my sub main (
         die $msg;
     } # end of sub mail-die ($msg)
 
-    #| #TODO Get this working
+    #TODO Get this working
     sub mail-me (Str $body) {
         my $to = 'deoac.shimon@gmail.com';
         my $subject = 'apotd error';
@@ -317,8 +328,10 @@ my sub main (
 
 =begin pod
 
-#    When using Pod::To::Markdown2 or Pod::To::HTML2, 
-#    use these instead of =head1 NAME
+=begin comment
+#    When not using Pod::To::Markdown2 or Pod::To::HTML2, use these instead
+#    of =head1 NAME
+=end comment
 
 =TITLE Astronomy Picture of the Day
 
@@ -326,11 +339,10 @@ my sub main (
 
 =begin comment
 
-#    When not using Pod::To::Markdown2 or Pod::To::HTML2, 
-#    use these instead of =TITLE and =SUBTITLE
-#
-    =head1 NAME 
+#    When not using Pod::To::Markdown2 or Pod::To::HTML2, use these instead
+#    of =TITLE and =SUBTITLE
 
+    =head1 NAME 
 
     apotd - Download Today's Astronomy Picture of the Day
 
@@ -338,9 +350,10 @@ my sub main (
 
 =head1 VERSION
 
-This documentation refers to C<App::APOTD> version 1.0.0
+This documentation refers to C<apotd> version 1.0.1
 
-=head1 SYNOPSIS 
+
+=head1 SYNOPSIS
 
 Usage:
 
@@ -355,6 +368,7 @@ To downloand and save using the default behavior, simply:
 =begin code :lang<bash>
 $ apotd
 =end code
+
 
 =head1 DESCRIPTION
 
@@ -390,11 +404,9 @@ file's comment. e.g.
 
     https://apod.nasa.gov/apod/ap230321.html
 
-
 =head1 OPTIONS
 
 =begin code :lang<bash>
-
 # Save to directory "foo"
 $ apotd --dir=foo
 $ apotd    -d=foo
@@ -407,7 +419,6 @@ $ apotd     -f=bar
 # Prepend a count to the filename
 $ apotd --prepend-count
 $ apotd  -p
-
 =end code
 
 =head1 DIAGNOSTICS
@@ -439,7 +450,6 @@ Successfully wrote the alt-text and permanent link as a comment to the file.
 
 =head1 DEPENDENCIES
 
-    CLI::Version
     LWP::Simple;
     Filetype::Magic;
     Digest::SHA1::Native;
@@ -467,7 +477,7 @@ Source can be located at: https://github.com/deoac/apotd.git
 
 Comments, suggestions, and pull requests are welcome.
 
-=head1 COPYRIGHT AND LICENSE 
+=head1 LICENSE AND COPYRIGHT
 
 Copyright 2023 Shimon Bollinger
 

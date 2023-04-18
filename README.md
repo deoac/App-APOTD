@@ -1,31 +1,14 @@
-[![Actions Status](https://github.com/deoac/App-APOTD/actions/workflows/test.yml/badge.svg)](https://github.com/deoac/App-APOTD/actions)
+[![Actions Status](https://github.com/deoac/apotd/actions/workflows/test.yml/badge.svg)](https://github.com/deoac/apotd/actions)
 
-class Str :d(:$dir) is copy = Code.new
---------------------------------------
-
-What directory should the image be saved to?
-
-class Str :f(:$filename) is copy
---------------------------------
-
-What filename should it be saved under? [default: the caption of the image]
-
-class Bool :p(:$prepend-count) = Bool::False
---------------------------------------------
-
-Add a count to the start of the filename.
-
-### sub mail-me
+### sub print-version
 
 ```raku
-sub mail-me(
-    Str $body
+sub print-version(
+    $verbose
 ) returns Mu
 ```
 
-#TODO Get this working
-
-# When using Pod::To::Markdown2 or Pod::To::HTML2, # use these instead of =head1 NAME
+Copied from <zef:lizmat>'s CLI::Version module. For some reason, I can't get it to work here. $?DISTRIBUTION.meta does not show data from my META6.json.
 
 TITLE
 =====
@@ -40,10 +23,10 @@ Download Today's Astronomy Picture of the Day
 VERSION
 =======
 
-This documentation refers to `App::APOTD` version 1.0.0
+This documentation refers to `apotd` version 1.0.1
 
-SYNOPSIS 
-=========
+SYNOPSIS
+========
 
 Usage:
 
@@ -137,7 +120,6 @@ Successfully wrote the alt-text and permanent link as a comment to the file.
 DEPENDENCIES
 ============
 
-    CLI::Version
     LWP::Simple;
     Filetype::Magic;
     Digest::SHA1::Native;
@@ -167,8 +149,8 @@ Source can be located at: https://github.com/deoac/apotd.git
 
 Comments, suggestions, and pull requests are welcome.
 
-COPYRIGHT AND LICENSE 
-======================
+LICENSE AND COPYRIGHT
+=====================
 
 Copyright 2023 Shimon Bollinger
 
