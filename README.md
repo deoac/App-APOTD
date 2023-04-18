@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/deoac/apotd/actions/workflows/test.yml/badge.svg)](https://github.com/deoac/apotd/actions)
+[![Actions Status](https://github.com/deoac/App-APOTD/actions/workflows/test.yml/badge.svg)](https://github.com/deoac/App-APOTD/actions)
 
 ### sub print-version
 
