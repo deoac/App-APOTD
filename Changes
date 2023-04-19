@@ -1,6 +1,7 @@
 Revision history for App-APOTD
 
 {{$NEXT}}
+    - Added SYNOPSIS to the POD6
 
 1.0.6  2023-04-19T11:55:02-04:00
     - Finally nailed $?DISTRIBUTION usage
