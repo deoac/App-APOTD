@@ -9,7 +9,7 @@ use v6.d;
 #
 #       AUTHOR: <Shimon Bollinger>  (<deoac.bollinger@gmail.com>)
 #      VERSION: 1.0.1
-#     REVISION: Last modified: Mon 17 Apr 2023 10:38:49 PM EDT
+#     REVISION: Last modified: Tue 18 Apr 2023 10:24:33 PM EDT
 #===============================================================================
 
 use Filetype::Magic;
@@ -36,9 +36,9 @@ my regex in-dbl-quotes       {
                                 <dbl-quote>
                              }
 
-#| Copied from <zef:lizmat>'s CLI::Version module.
-#| For some reason, I can't get it to work here.
-#| $?DISTRIBUTION.meta does not show data from my META6.json.
+# Copied from <zef:lizmat>'s CLI::Version module.
+# For some reason, I can't get it to work here.
+# $?DISTRIBUTION.meta does not show data from my META6.json.
 sub print-version ($verbose) is export {
     my $compiler = Compiler.new;
     say   'apotd - '

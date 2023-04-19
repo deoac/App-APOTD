@@ -1,15 +1,5 @@
 [![Actions Status](https://github.com/deoac/App-APOTD/actions/workflows/test.yml/badge.svg)](https://github.com/deoac/App-APOTD/actions)
 
-### sub print-version
-
-```raku
-sub print-version(
-    $verbose
-) returns Mu
-```
-
-Copied from <zef:lizmat>'s CLI::Version module. For some reason, I can't get it to work here. $?DISTRIBUTION.meta does not show data from my META6.json.
-
 TITLE
 =====
 
@@ -29,7 +19,7 @@ SYNOPSIS
 ========
 
 Usage:
-
+    apotd [-v|-V|--version] [--verbose]
     apotd [-d|--dir=<Str>] [-f|--filename=<Str>] [-a|--prepend-count]
 
       -d|--dir=<Str>         What directory should the image be saved to? [default: '$*HOME/Pictures/apotd']
