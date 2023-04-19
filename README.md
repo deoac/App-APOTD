@@ -13,13 +13,14 @@ Download Today's Astronomy Picture of the Day
 VERSION
 =======
 
-This documentation refers to `apotd` version 1.0.1
+This documentation refers to `apotd` version 1.0.6
 
 SYNOPSIS
 ========
 
 Usage:
 
+    apotd [-v|-V|--version] [--verbose]
     apotd [-d|--dir=<Str>] [-f|--filename=<Str>] [-a|--prepend-count]
 
       -d|--dir=<Str>         What directory should the image be saved to? [default: '$*HOME/Pictures/apotd']
@@ -91,8 +92,8 @@ Failed to create directory <var>directory</var>: Failed to mkdir: No such file o
 
 Failed to resolve host name 'apod.nasa.gov'
 
-Problems specific to `apotd`:
------------------------------
+Problems specific to `apotd`
+----------------------------
 
 Couldn't find an image on the site. It's probably a video today.
 
@@ -127,8 +128,6 @@ BUGS AND LIMITATIONS
 ====================
 
 There are no known bugs in this module.
-
-Please report problems to Shimon Bollinger <deoac.shimon@gmail.com>
 
 AUTHOR
 ======

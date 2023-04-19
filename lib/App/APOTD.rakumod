@@ -8,15 +8,15 @@ use v6.d;
 #  DESCRIPTION: Download the Astronomy Picture of the Day
 #
 #       AUTHOR: <Shimon Bollinger>  (<deoac.bollinger@gmail.com>)
-#      VERSION: 1.0.1
-#     REVISION: Last modified: Tue 18 Apr 2023 10:55:48 PM EDT
+#      VERSION: 1.0.6
+#     REVISION: Last modified: Wed 19 Apr 2023 11:51:05 AM EDT
 #===============================================================================
 
 use Filetype::Magic;
 use Digest::SHA1::Native;
 use LWP::Simple;
 
-our $VERSION is export = v1.0.1;
+our $VERSION is export = $?DISTRIBUTION.meta<version>;
 
 constant $APOTD-PAGE   = "https://apod.nasa.gov/apod/astropix.html";
 constant $WEBSITE      = $APOTD-PAGE.IO.dirname;
@@ -36,14 +36,13 @@ my regex in-dbl-quotes       {
                                 <dbl-quote>
                              }
 
-# Copied from <zef:lizmat>'s CLI::Version module.
+# Unabashedly copied from <zef:lizmat>'s CLI::Version module.
 # For some reason, I can't get it to work here.
-# $?DISTRIBUTION.meta does not show data from my META6.json.
 sub print-version ($verbose) is export {
     my $compiler = Compiler.new;
     say   'apotd - '
-        ~ ($verbose ?? "Download Today's Astronomy Picture of the Day" ~ ".\nP" !! 'p')
-        ~ "rovided by App::APOTD version $VERSION, running "
+        ~ ($verbose ?? $?DISTRIBUTION.meta<description> ~ ".\nP" !! 'p')
+        ~ "rovided by $?DISTRIBUTION.meta<name> version $VERSION, running "
         ~ $*RAKU.name
         ~ ' '
         ~ $*RAKU.version
@@ -350,13 +349,14 @@ my sub main (
 
 =head1 VERSION
 
-This documentation refers to C<apotd> version 1.0.1
+This documentation refers to C<apotd> version 1.0.6
 
 
 =head1 SYNOPSIS
 
 Usage:
 
+  apotd [-v|-V|--version] [--verbose]
   apotd [-d|--dir=<Str>] [-f|--filename=<Str>] [-a|--prepend-count]
 
     -d|--dir=<Str>         What directory should the image be saved to? [default: '$*HOME/Pictures/apotd']
@@ -433,7 +433,7 @@ Failed to mkdir: No such file or directory
 
 Failed to resolve host name 'apod.nasa.gov'
 
-=head2 Problems specific to C<apotd>:
+=head2 Problems specific to C<apotd>
 
 Couldn't find an image on the site.  It's probably a video today.
 
@@ -466,8 +466,6 @@ And that tag has an C<alt=> attribute.
 =head1 BUGS AND LIMITATIONS
 
 There are no known bugs in this module.
-
-Please report problems to Shimon Bollinger <deoac.shimon@gmail.com>
 
 =head1 AUTHOR
 
