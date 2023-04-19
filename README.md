@@ -19,7 +19,7 @@ SYNOPSIS
 ========
 
 Usage:
-    apotd [-v|-V|--version] [--verbose]
+
     apotd [-d|--dir=<Str>] [-f|--filename=<Str>] [-a|--prepend-count]
 
       -d|--dir=<Str>         What directory should the image be saved to? [default: '$*HOME/Pictures/apotd']
