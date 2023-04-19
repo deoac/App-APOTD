@@ -1,6 +1,8 @@
 Revision history for App-APOTD
 
 {{$NEXT}}
+
+1.0.7  2023-04-19T13:33:43-04:00
     - Added SYNOPSIS to the POD6
 
 1.0.6  2023-04-19T11:55:02-04:00
