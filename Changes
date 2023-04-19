@@ -2,6 +2,9 @@ Revision history for App-APOTD
 
 {{$NEXT}}
 
+1.0.3  2023-04-18T22:37:00-04:00
+    - Fixed the Usage message
+
 1.0.2  2023-04-18T22:28:12-04:00
     - Removed POD6 Declarators
 

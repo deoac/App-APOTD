@@ -9,7 +9,7 @@ use v6.d;
 #
 #       AUTHOR: <Shimon Bollinger>  (<deoac.bollinger@gmail.com>)
 #      VERSION: 1.0.1
-#     REVISION: Last modified: Tue 18 Apr 2023 10:24:33 PM EDT
+#     REVISION: Last modified: Tue 18 Apr 2023 10:35:42 PM EDT
 #===============================================================================
 
 use Filetype::Magic;
@@ -65,6 +65,9 @@ my sub main (
     Bool :p(:$prepend-count)    = False,
     Bool :$debug        is copy = False,
 ) is export {
+    proto sub MAIN(|) {*}
+    use CLI::Version $?DISTRIBUTION, &MAIN;
+
     my $is-cronjob = !$*IN.t; # i.e. stdin not from a terminal
     $debug ||= $is-cronjob;   # always log debug info when running as a cronjob.
 
