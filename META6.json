@@ -10,7 +10,7 @@
     "Filetype::Magic",
     "LWP::Simple"
   ],
-  "description": "Download today's Astronomy Picture of the Day",
+  "description": "Download today's Astronomy Picture of the Day!",
   "license": "Artistic-2.0",
   "name": "App::APOTD",
   "perl": "6.d",
@@ -24,5 +24,5 @@
   ],
   "test-depends": [
   ],
-  "version": "1.0.4"
+  "version": "1.0.5"
 }
