@@ -8,8 +8,8 @@ use v6.d;
 #  DESCRIPTION: Download the Astronomy Picture of the Day
 #
 #       AUTHOR: <Shimon Bollinger>  (<deoac.bollinger@gmail.com>)
-#      VERSION: 1.0.6
-#     REVISION: Last modified: Wed 19 Apr 2023 11:51:05 AM EDT
+#      VERSION: 1.0.7
+#     REVISION: Last modified: Wed 19 Apr 2023 01:26:23 PM EDT
 #===============================================================================
 
 use Filetype::Magic;
@@ -37,12 +37,23 @@ my regex in-dbl-quotes       {
                              }
 
 # Unabashedly copied from <zef:lizmat>'s CLI::Version module.
+# https://github.com/lizmat/CLI-Version 
 # For some reason, I can't get it to work here.
 sub print-version ($verbose) is export {
-    my $compiler = Compiler.new;
-    say   'apotd - '
-        ~ ($verbose ?? $?DISTRIBUTION.meta<description> ~ ".\nP" !! 'p')
-        ~ "rovided by $?DISTRIBUTION.meta<name> version $VERSION, running "
+    use PrettyDump;
+    pd $?DISTRIBUTION.meta;
+    say $?DISTRIBUTION.meta<name>;
+    say '--------------';
+    my %META; %META := $_ with try $?DISTRIBUTION.meta;
+    my $compiler := Compiler.new;
+    say $*PROGRAM.basename
+        ~ ' - '
+        ~ ($verbose ?? (%META<description> // "") ~ ".\nP" !! 'p')
+        ~ 'rovided by '
+        ~ (%META<name> // "")
+        ~ ' '
+        ~ (%META<ver> // "")
+        ~ ', running '
         ~ $*RAKU.name
         ~ ' '
         ~ $*RAKU.version
@@ -52,7 +63,6 @@ sub print-version ($verbose) is export {
         ~ $compiler.version.Str.subst(/ '.' g .+/)
         ~ '.'
     ;
-    exit;
 } # end of sub print-version ($version, $verbose)
 
 my sub main (
@@ -349,12 +359,10 @@ my sub main (
 
 =head1 VERSION
 
-This documentation refers to C<apotd> version 1.0.6
+This documentation refers to C<apotd> version 1.0.7
 
 
-=head1 SYNOPSIS
-
-Usage:
+=head1 USAGE
 
   apotd [-v|-V|--version] [--verbose]
   apotd [-d|--dir=<Str>] [-f|--filename=<Str>] [-a|--prepend-count]
@@ -363,7 +371,7 @@ Usage:
     -f|--filename=<Str>    What filename should it be saved under? [default: the caption of the image]
     -a|--prepend-count     Add a count to the start of the filename. [default: False]
 
-To downloand and save using the default behavior, simply:
+To downloand the image and save it using the default behavior, simply:
 
 =begin code :lang<bash>
 $ apotd
@@ -376,11 +384,14 @@ NASA provides a website (L<Astronomy Picture of the
 Day|https://apod.nasa.gov/apod/astropix.html>) which displays a different
 astronomy picture every day.
 
-"Each day a different image or photograph of our
-fascinating universe is featured,
-along with a brief explanation written by a professional astronomer."
+=defn 
+Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer.
 
-C<apotd> will download today's image.  Use it for wallpaper, screen savers, etc.
+Set C<apotd> as a cronjob (*nux), launch agent (MacOS), or Task
+Scheduler (Windows) and you'll accumulate a beautiful collection of images for
+wallpaper, screen savers, etc.
+
+=head1 SYNOPSIS
 
 By default, C<apotd> will save to
 
@@ -396,11 +407,10 @@ and will optionally prepend a number which increments with each new image, e.g.
 
 Macintosh allows a comment to be associated with each file.  So on Macs,
 C<apodt> will copy the C<alt> text and the permalink for the image into the
-file's comment. e.g.
+file's comment, e.g.
 
-    A star field strewn with bunches of brown dust is pictured. In the center
-    is a bright area of light brown dust, and in the  center of that is
-    a bright region of star formation.
+=defn
+    A star field strewn with bunches of brown dust is pictured. In the center is a bright area of light brown dust, and in the  center of that is a bright region of star formation.
 
     https://apod.nasa.gov/apod/ap230321.html
 
