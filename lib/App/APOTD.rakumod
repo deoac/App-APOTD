@@ -8,8 +8,8 @@ use v6.d;
 #  DESCRIPTION: Download the Astronomy Picture of the Day
 #
 #       AUTHOR: <Shimon Bollinger>  (<deoac.bollinger@gmail.com>)
-#      VERSION: 1.0.7
-#     REVISION: Last modified: Wed 19 Apr 2023 01:26:23 PM EDT
+#      VERSION: 1.0.8
+#     REVISION: Last modified: Thu 20 Apr 2023 06:10:20 PM EDT
 #===============================================================================
 
 use Filetype::Magic;
@@ -40,15 +40,11 @@ my regex in-dbl-quotes       {
 # https://github.com/lizmat/CLI-Version 
 # For some reason, I can't get it to work here.
 sub print-version ($verbose) is export {
-    use PrettyDump;
-    pd $?DISTRIBUTION.meta;
-    say $?DISTRIBUTION.meta<name>;
-    say '--------------';
     my %META; %META := $_ with try $?DISTRIBUTION.meta;
     my $compiler := Compiler.new;
     say $*PROGRAM.basename
         ~ ' - '
-        ~ ($verbose ?? (%META<description> // "") ~ ".\nP" !! 'p')
+        ~ ($verbose ?? (%META<description> // "") ~ "\nP" !! 'p')
         ~ 'rovided by '
         ~ (%META<name> // "")
         ~ ' '
@@ -359,7 +355,7 @@ my sub main (
 
 =head1 VERSION
 
-This documentation refers to C<apotd> version 1.0.7
+This documentation refers to C<apotd> version 1.0.8
 
 
 =head1 USAGE
@@ -435,10 +431,10 @@ $ apotd  -p
 
 =head2 General problems
 
-Failed to get the directory contents of R<directory>:
+Failed to get the directory contents of <I<directory>>:
 Failed to open dir: No such file or directory
 
-Failed to create directory R<directory>:
+Failed to create directory <I<directory>>:
 Failed to mkdir: No such file or directory
 
 Failed to resolve host name 'apod.nasa.gov'
@@ -447,9 +443,9 @@ Failed to resolve host name 'apod.nasa.gov'
 
 Couldn't find an image on the site.  It's probably a video today.
 
-The image has already been saved as R<filename>.
+The image has already been saved as <I<filename>>.
 
-Couldn't write the alt-text to R<path>.
+Couldn't write the alt-text to <I<path>>.
 
 =head2 Success
 

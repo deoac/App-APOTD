@@ -1,6 +1,7 @@
 Revision history for App-APOTD
 
 {{$NEXT}}
+    - Removed a left-over debug print!
 
 1.0.7  2023-04-19T13:33:43-04:00
     - Added SYNOPSIS to the POD6
