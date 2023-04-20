@@ -1,6 +1,8 @@
 Revision history for App-APOTD
 
 {{$NEXT}}
+
+1.0.8  2023-04-20T18:12:05-04:00
     - Removed a left-over debug print!
 
 1.0.7  2023-04-19T13:33:43-04:00
