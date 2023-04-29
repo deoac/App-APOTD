@@ -27,7 +27,7 @@ multi sub MAIN (
     main(:$dir, :$filename, :$prepend-count, :$debug);
 }
 
-multi sub MAIN (Bool :v(:V(:$version)), Bool :$verbose = False)
+multi sub MAIN (Bool :v(:V(:$version))!, Bool :$verbose = False)
   is hidden-from-USAGE {
     print-version($verbose);
 } # end of multi sub MAIN (Str :v(:V(:$version)), :$verbose = False)

@@ -8,8 +8,8 @@ use v6.d;
 #  DESCRIPTION: Download the Astronomy Picture of the Day
 #
 #       AUTHOR: <Shimon Bollinger>  (<deoac.bollinger@gmail.com>)
-#      VERSION: 1.0.8
-#     REVISION: Last modified: Thu 20 Apr 2023 06:10:20 PM EDT
+#      VERSION: 1.0.9
+#     REVISION: Last modified: Thu 20 Apr 2023 06:17:47 PM EDT
 #===============================================================================
 
 use Filetype::Magic;
@@ -355,7 +355,7 @@ my sub main (
 
 =head1 VERSION
 
-This documentation refers to C<apotd> version 1.0.8
+This documentation refers to C<apotd> version 1.0.9
 
 
 =head1 USAGE
