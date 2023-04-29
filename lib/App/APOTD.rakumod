@@ -9,7 +9,7 @@ use v6.d;
 #
 #       AUTHOR: <Shimon Bollinger>  (<deoac.bollinger@gmail.com>)
 #      VERSION: 1.0.9
-#     REVISION: Last modified: Thu 20 Apr 2023 06:17:47 PM EDT
+#     REVISION: Last modified: Sat 29 Apr 2023 10:16:06 AM EDT
 #===============================================================================
 
 use Filetype::Magic;
@@ -35,10 +35,9 @@ my regex in-dbl-quotes       {
                                 $<quoted-string>=(<not-dbl-quote>+)
                                 <dbl-quote>
                              }
-
 # Unabashedly copied from <zef:lizmat>'s CLI::Version module.
 # https://github.com/lizmat/CLI-Version 
-# For some reason, I can't get it to work here.
+# For some reason, I can't get her module to work here.
 sub print-version ($verbose) is export {
     my %META; %META := $_ with try $?DISTRIBUTION.meta;
     my $compiler := Compiler.new;
@@ -376,12 +375,13 @@ $ apotd
 
 =head1 DESCRIPTION
 
-NASA provides a website (L<Astronomy Picture of the
-Day|https://apod.nasa.gov/apod/astropix.html>) which displays a different
-astronomy picture every day.
+L<Astronomy Picture of the Day|https://apod.nasa.gov/apod/astropix.html> is
+a website provided by NASA and Michigan Technological University which
+provides a different astronomy picture every day. 
 
 =defn 
-Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer.
+Each day a different image or photograph of our fascinating universe is
+featured, along with a brief explanation written by a professional astronomer.
 
 Set C<apotd> as a cronjob (*nux), launch agent (MacOS), or Task
 Scheduler (Windows) and you'll accumulate a beautiful collection of images for
@@ -477,7 +477,7 @@ There are no known bugs in this module.
 
 Shimon Bollinger  <deoac.shimon@gmail.com>
 
-Source can be located at: https://github.com/deoac/apotd.git
+Source can be located at: L<https://github.com/deoac/apotd.git>
 
 Comments, suggestions, and pull requests are welcome.
 

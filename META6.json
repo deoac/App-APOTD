@@ -15,7 +15,6 @@
   "name": "App::APOTD",
   "perl": "6.d",
   "provides": {
-    "App::APOTD": "lib/App/APOTD.rakumod"
   },
   "resources": [
   ],
