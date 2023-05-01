@@ -7,9 +7,9 @@ use v6.d;
 #
 #  DESCRIPTION: Download the Astronomy Picture of the Day
 #
-#       AUTHOR: <Shimon Bollinger>  (<deoac.bollinger@gmail.com>)
+#       AUTHOR: <Shimon Bollinger>  (<deoac.bollinger@gmail.com>) 
 #      VERSION: 1.0.9
-#     REVISION: Last modified: Sat 29 Apr 2023 10:16:06 AM EDT
+#     REVISION: Last modified: Sun 30 Apr 2023 10:33:29 PM EDT
 #===============================================================================
 
 use Filetype::Magic;
@@ -329,6 +329,32 @@ my sub main (
 
     } # end of sub main (...) is export
  
+my %*SUB-MAIN-OPTS =
+  :named-anywhere,             # allow named variables at any location
+  :bundling,                   # allow bundling of named arguments
+#  :coerce-allomorphs-to(Str),  # coerce allomorphic arguments to given type
+  :allow-no,                   # allow --no-foo as alternative to --/foo
+  :numeric-suffix-as-value,    # allow -j2 as alternative to --j=2
+;
+
+#| Run with '--pod' to see all of the POD6 objects
+multi MAIN(Bool :$pod!) {
+    for $=pod -> $pod-item {
+        for $pod-item.contents -> $pod-block {
+            $pod-block.raku.say;
+        print "\n\n";
+        }
+    }
+} # end of multi MAIN (:$pod)
+
+#| Run with '--doc' to generate a document from the POD6
+#| It will be rendered in Text format 
+#| unless specified with the --format option.  e.g.
+#|       --format=HTML
+multi MAIN(Str :$doc!) {
+    run $*EXECUTABLE, "--doc=$doc", $*PROGRAM;
+} # end of multi MAIN(Bool :$man!)
+
 
 =begin pod
 
@@ -483,7 +509,7 @@ Comments, suggestions, and pull requests are welcome.
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2023 Shimon Bollinger
+© 2023 Shimon Bollinger
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.
