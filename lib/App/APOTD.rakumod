@@ -9,7 +9,7 @@ use v6.d;
 #
 #       AUTHOR: <Shimon Bollinger>  (<deoac.bollinger@gmail.com>) 
 #      VERSION: 1.0.9
-#     REVISION: Last modified: Sun 30 Apr 2023 10:33:29 PM EDT
+#     REVISION: Last modified: Wed 05 Jul 2023 12:29:12 PM EDT
 #===============================================================================
 
 use Filetype::Magic;
@@ -296,6 +296,8 @@ my sub main (
     } # end of sub save-image (Str, Buf --> Bool)
 
     sub mail-die (Str $msg) is hidden-from-backtrace {
+        return; # temporarily until I get this working
+
         my $mail-error = mail-me $msg;
         $msg ~= "\n$mail-error" if $mail-error.chars > 0;
         die $msg;

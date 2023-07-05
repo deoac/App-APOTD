@@ -2,6 +2,13 @@ Revision history for App-APOTD
 
 {{$NEXT}}
 
+1.0.9  2023-07-05T12:49:35-04:00
+
+    - Changed -a to -p (prepend, not append)
+    - Got rid of the mail routine (not working properly)
+    - Gave credit to NASA and Michigan Technical University for the website.
+    - Added --doc and --pod options
+
 1.0.8  2023-04-20T18:12:05-04:00
     - Removed a left-over debug print!
 
